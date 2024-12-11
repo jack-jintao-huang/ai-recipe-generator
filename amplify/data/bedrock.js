@@ -11,6 +11,7 @@ export function request(ctx) {
       params: {
         headers: {
           "Content-Type": "application/json",
+          "accept": "application/json",
         },
         body: JSON.stringify({
           anthropic_version: "bedrock-2023-05-31",
@@ -37,6 +38,7 @@ export function request(ctx) {
     // Extract the text content from the response
     const res = {
       body: Array.isArray(parsedBody.content) ? parsedBody.content[0].text : parsedBody.content.text,
+      txt: parsedBody,
     };
     // Return the response
     return res;
