@@ -36,7 +36,7 @@ export function request(ctx) {
     const parsedBody = JSON.parse(ctx.result.body);
     // Extract the text content from the response
     const res = {
-      body: parsedBody.content[0].text,
+      body: Array.isArray(parsedBody.content) ? parsedBody.content[0].text : parsedBody.content.text,
     };
     // Return the response
     return res;
